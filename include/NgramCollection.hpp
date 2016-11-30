@@ -28,16 +28,11 @@ public:
   unsigned getN() const { return n; }
 
   //Retrieve the string representation of this NgramCollection (one entry per line) in specified order
-  std::string toString(char order ='a') const; // will call one of the below (defaults to alpha if no argument)
+  std::string toString(char order ='c') const; // will default to count
   // specialized print-sorted functions
   std::string toStringAlpha() const;
   std::string toStringReverseAlpha() const;
   std::string toStringCount() const;
-
-  //Based on the probability distribution present in this NgramCollection, select
-  //a word to follow the N-1 strings from begin up to end
-  std::string pickWord(std::list<std::string>::const_iterator begin,
-		       std::list<std::string>::const_iterator end) const;
 
 private:
 

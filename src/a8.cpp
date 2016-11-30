@@ -22,29 +22,5 @@ void printUsage() {
 
 /* main: parse arguments, call appropriate functions */
 int main(int argc, char** argv) {
-  if (argc < 4 || (std::string(argv[3]) == "g" && argc < 5)) {
-    printUsage();
-    return 1;
-  }
-
-  std::string inputName(argv[1]);
-  int n = readInt(argv[2]);
-
-  LanguageModel lm(n);
-  lm.readFileList(inputName);
-  
-  if (std::string(argv[3]) == "g") { // if we get "g" we need to generate text
-    int genCount = readInt(argv[4]);
-    std::cout << "Generated text:\n";
-    for (int i=0; i<genCount; ++i) {
-      std::cout << lm.generateText() << "\n";
-    }
-  } else if (std::string(argv[3]) == "a" || std::string(argv[3]) == "r" || std::string(argv[3]) == "c") {
-    std::cout << lm.toString(argv[3][0]); // print the model
-  } else { // got something other than a|r|c|g, so print usage and give up 
-    printUsage();
-    return 1;
-  }
-
-  return 0;
+    return 0;
 }

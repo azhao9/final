@@ -29,25 +29,13 @@ $(shell mkdir -p $(BIN_DIR))
 # targets 
 ###############################
 
-all: $(BIN_DIR)/a8 $(BIN_DIR)/unitTest
-
-test: $(BIN_DIR)/unitTest
-	$(BIN_DIR)/unitTest
+all: $(BIN_DIR)/a8 
 
 $(BIN_DIR)/a8: $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/LanguageModel.o 
 	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/LanguageModel.o -o $(BIN_DIR)/a8
 
-$(BIN_DIR)/unitTest: $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/NgramCollection.o
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/NgramCollection.o -o $(BIN_DIR)/unitTest
-
 $(OBJ_DIR)/a8.o: a8.cpp 
 	$(GCC) $(CPPFLAGS) -c a8.cpp -o $(OBJ_DIR)/a8.o
-
-$(OBJ_DIR)/unitTestDriver.o: unitTestDriver.cpp 
-	$(GCC) $(CPPFLAGS) -c unitTestDriver.cpp -o $(OBJ_DIR)/unitTestDriver.o
-
-$(OBJ_DIR)/unitTests-NgramCollection.o: unitTests-NgramCollection.cpp 
-	$(GCC) $(CPPFLAGS) -c unitTests-NgramCollection.cpp -o $(OBJ_DIR)/unitTests-NgramCollection.o
 
 $(OBJ_DIR)/NgramCollection.o: NgramCollection.cpp $(INC_DIR)/NgramCollection.hpp 
 	 $(GCC) $(CPPFLAGS) -c NgramCollection.cpp -o $(OBJ_DIR)/NgramCollection.o

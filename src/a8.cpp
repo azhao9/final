@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "LanguageModel.hpp"
+#include "Document.hpp"
 
 /* nice, safe C++ method to convert a string to an integer */
 int readInt(char *str) {

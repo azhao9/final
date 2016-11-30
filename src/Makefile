@@ -31,8 +31,8 @@ $(shell mkdir -p $(BIN_DIR))
 
 all: $(BIN_DIR)/a8 
 
-$(BIN_DIR)/a8: $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/LanguageModel.o 
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/LanguageModel.o -o $(BIN_DIR)/a8
+$(BIN_DIR)/a8: $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o 
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o -o $(BIN_DIR)/a8
 
 $(OBJ_DIR)/a8.o: a8.cpp 
 	$(GCC) $(CPPFLAGS) -c a8.cpp -o $(OBJ_DIR)/a8.o
@@ -40,8 +40,8 @@ $(OBJ_DIR)/a8.o: a8.cpp
 $(OBJ_DIR)/NgramCollection.o: NgramCollection.cpp $(INC_DIR)/NgramCollection.hpp 
 	 $(GCC) $(CPPFLAGS) -c NgramCollection.cpp -o $(OBJ_DIR)/NgramCollection.o
 
-$(OBJ_DIR)/LanguageModel.o: LanguageModel.cpp $(INC_DIR)/LanguageModel.hpp $(INC_DIR)/NgramCollection.hpp
-	 $(GCC) $(CPPFLAGS) -c LanguageModel.cpp -o $(OBJ_DIR)/LanguageModel.o
+$(OBJ_DIR)/Document.o: Document.cpp $(INC_DIR)/Document.hpp $(INC_DIR)/NgramCollection.hpp
+	 $(GCC) $(CPPFLAGS) -c Document.cpp -o $(OBJ_DIR)/Document.o
 
 
 ###############################

@@ -8,25 +8,25 @@
 
 class Document {
 
-public:
+	public:
 
-  // constructor; need to specify N and path of file
-  Document(std::string p) : path(p) { }
+		// constructor; need to specify N and path of file
+		Document(std::string p) : path(p) { }
 
-  // print the model to a string ('a'=alpha, 'r'=reverse-alpha, 'c'=count)
-  std::string toString(unsigned n, char order ='c') const;
+		// print the model to a string ('a'=alpha, 'r'=reverse-alpha, 'c'=count)
+		std::string toString(unsigned n) const;
 
-private:
-  // add ngrams to the model from a vector of words
-  void buildNgrams(unsigned n, const std::vector<std::string> &text);
+		// add text from the path for a given length n
+		void addTextFromFile(unsigned n);
 
-  // add text from the path for a given length n
-  void addTextFromFile(unsigned n);
+	private:
+		// add ngrams to the model from a vector of words
+		void buildNgrams(unsigned n, const std::vector<std::string> &text);
 
-  // maps from N to the NgramCollection
-  std::map<unsigned, NgramCollection> NgramCollections;
-  
-  std::string path;
+		// maps from N to the NgramCollection
+		std::map<unsigned, NgramCollection> NgramCollections;
+
+		std::string path;
 };
 
 #endif

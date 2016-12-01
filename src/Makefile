@@ -31,11 +31,14 @@ $(shell mkdir -p $(BIN_DIR))
 
 all: $(BIN_DIR)/a8 
 
-$(BIN_DIR)/a8: $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o 
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o -o $(BIN_DIR)/a8
+$(BIN_DIR)/a8: $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o $(OBJ_DIR)/PlagCheck.o
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o $(OBJ_DIR)/PlagCheck.o -o $(BIN_DIR)/a8
 
 $(OBJ_DIR)/a8.o: a8.cpp 
 	$(GCC) $(CPPFLAGS) -c a8.cpp -o $(OBJ_DIR)/a8.o
+
+$(OBJ_DIR)/PlagCheck.o: PlagCheck.cpp $(INC_DIR)/PlagCheck.hpp $(INC_DIR)/Document.hpp
+	$(GCC) $(CPPFLAGS) -c PlagCheck.cpp -o $(OBJ_DIR)/PlagCheck.o
 
 $(OBJ_DIR)/NgramCollection.o: NgramCollection.cpp $(INC_DIR)/NgramCollection.hpp 
 	 $(GCC) $(CPPFLAGS) -c NgramCollection.cpp -o $(OBJ_DIR)/NgramCollection.o

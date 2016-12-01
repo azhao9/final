@@ -2,6 +2,7 @@
 #include <sstream>
 #include <string>
 #include "Document.hpp"
+#include "PlagCheck.hpp"
 
 /* nice, safe C++ method to convert a string to an integer */
 int readInt(char *str) {

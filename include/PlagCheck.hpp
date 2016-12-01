@@ -9,7 +9,7 @@ class PlagCheck {
 	public:
 
 		// constructor; need to specify the path for list of files
-		PlagCheck(std::string f) : { readFiles(f); }
+		PlagCheck(std::string f) { readNames(f); }
 
 		// prints all file names
 		std::string toString() const;
@@ -20,7 +20,7 @@ class PlagCheck {
 		std::vector<Document> docs;
 
 		// returns a list of file paths to be read
-		std::vector<std::string> readFiles(std::string listFile);
+		std::vector<std::string> readNames(std::string listFile);
 
 		// reads files from list into docs
 		void readFileList(std::string fname);

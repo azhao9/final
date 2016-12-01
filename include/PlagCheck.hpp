@@ -19,9 +19,13 @@ class PlagCheck {
 		// vector containing all documents
 		std::vector<Document> docs;
 
-		// reads files from a file containing paths into vector of documents
-		void readFiles(std::string path);
+		// returns a list of file paths to be read
+		std::vector<std::string> readFiles(std::string listFile);
+
+		// reads files from list into docs
+		void readFileList(std::string fname);
 
 };
 
 #endif
+

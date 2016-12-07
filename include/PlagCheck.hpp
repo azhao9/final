@@ -9,7 +9,7 @@ class PlagCheck {
 	public:
 
 		// constructor; need to specify the path for list of files
-		PlagCheck(std::string f) { readNames(f); }
+		PlagCheck(std::string f) { readFileList(f); }
 
 		// prints all file names
 		std::string toString() const;

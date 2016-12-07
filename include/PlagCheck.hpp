@@ -15,19 +15,16 @@ class PlagCheck {
 		std::string toString() const;
 
 		// check with a threshold
-		std::map<std::string, int> checkThreshold(int index, int threshold);
+		std::map<std::string, int> checkThreshold(int index, int threshold, unsigned n);
 
 		// checks with high sensitivity
-		void checkH(int index);
+		std::map<std::string, int> checkH(int index);
 
 		// checks with medium sensitivity
-		void checkM(int index);
+		std::map<std::string, int> checkM(int index);
 
 		// checks with low sensitivity
-		void checkL(int index);
-
-		// checks a specific document against others
-		void checkDoc(int index, char sens);
+		std::map<std::string, int> checkL(int index);
 
 		// check through all documents
 		void masterCheck(char sens);
@@ -37,6 +34,9 @@ class PlagCheck {
 
 		// vector containing all documents
 		std::vector<Document> docs;
+
+		// checks a specific document against others
+		std::map<std::string, int> checkDoc(int index, char sens);
 
 		// vector containing suspicious pairs of documents
 		std::vector<std::string> susPairs;

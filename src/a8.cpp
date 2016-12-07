@@ -24,12 +24,17 @@ void printUsage() {
 /* main: parse arguments, call appropriate functions */
 int main(int argc, char** argv) {
 
-	Document doc("../data/sonnet_1.txt");
-	doc.addTextFromFile(2);
+	if (argc == 1) {
 
-	doc.addTextFromFile(4);
+		std::cout << "Must specify a file containing paths\n";
+		return 1;
 
-	std::cout << doc.toString(4);
+	}
+
+	std::string path = argv[2];
+	PlagCheck p(path);
+
+	p.masterCheck('H');
 
 	return 0;
 }

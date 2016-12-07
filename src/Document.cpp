@@ -26,6 +26,27 @@ void Document :: addTextFromFile(unsigned n) {
 	buildNgrams(n, text); // add ngrams from the document to the model
 }
 
+/* Returns the number of words in the document 
+ */
+unsigned Document :: length() {
+	std::ifstream fin(path);
+
+	if (!fin.is_open()) { // make sure it opened
+		std::cerr << "Error: could not open file '" << path << "', file will be skipped...\n";
+		return 0;
+	}
+
+	int count = 0;
+	std::string word;
+
+	while (fin >> word) {
+		count++;
+	}
+
+	return count;
+
+}
+
 
 /* takes a document (as a vector of words, including start/end tags), and
  * adds each n-gram to the model */

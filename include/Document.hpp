@@ -19,6 +19,12 @@ class Document {
 		// add text from the path for a given length n
 		void addTextFromFile(unsigned n);
 
+		// returns the map of Ngrams
+		std::map<unsigned, NgramCollection> getGrams() {return NgramCollections;}
+
+		// returns the number of words in the document
+		unsigned length();
+
 	private:
 		// add ngrams to the model from a vector of words
 		void buildNgrams(unsigned n, const std::vector<std::string> &text);

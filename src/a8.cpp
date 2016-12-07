@@ -31,8 +31,7 @@ int main(int argc, char** argv) {
 
 	}
 
-	std::string path = argv[2];
-	PlagCheck p(path);
+	PlagCheck p(argv[2]);
 
 	p.masterCheck('H');
 

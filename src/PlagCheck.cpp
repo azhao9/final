@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <set>
 
 /* 
  * Accepts a file containing paths to documents
@@ -62,35 +63,69 @@ void PlagCheck :: checkDoc(int index, char sens) {
 	}
 }
 
+/* Checks for plagiarism for a certain threshold number of times
+*/
+std::map<std::string, int> PlagCheck :: checkThreshold(int index, int threshold) {
 
-void PlagCheck :: checkL(int index) {
-
+	// this document
 	Document thisDoc = docs.at(index);
 	std::map<unsigned, NgramCollection> thisGrams = thisDoc.getGrams();
 
-	// document does not contain any 8-grams, assume it can't be plagiarized
-	if (thisGrams.find(8) == thisGrams.end()) {
-		return;
+	// use a map for constant time access
+	std::map<std::string, int> badPairs;
+
+	// document does not contain any 9-grams, assume it can't be plagiarized
+	if (thisGrams.find(9) == thisGrams.end()) {
+		return badPairs;
 	}
 
-	NgramCollection this8gram = thisGrams.at(8);
-	auto this8gramCounts = this8gram.getCounts();
+	NgramCollection this9gram = thisGrams.at(9);
+	auto this9gramCounts = this9gram.getCounts();
 
+	// avoids checking pairs that were checked already
 	for (unsigned j = index+1; j < docs.size(); j++) {
+
+		int violations = 0;
 
 		Document curDoc = docs.at(j);
 
 		std::map<unsigned, NgramCollection> curGrams = curDoc.getGrams();
-		
-		// document to compare to does not contain any 8-grams, assume can't be plagiarized from
-		if (curGrams.find(8) == curGrams.end()) {
+
+		// document to compare to does not contain any 9-grams, assume can't be plagiarized from
+		if (curGrams.find(9) == curGrams.end()) {
 			continue;
 		}
 
-		NgramCollection cur8gram = curGrams.at(8);	
-		auto cur8gramCounts = cur8gram.getCounts();
+		NgramCollection cur9gram = curGrams.at(9);	
+		auto cur9gramCounts = cur9gram.getCounts();
+
+		for (auto &grams : this9gramCounts) {
+			std::vector<std::string> length8string = grams.first;
+
+			if (cur9gramCounts.find(length8string) != cur9gramCounts.end()) {
+				// suspicious, this doc contains an identical 8 word string as cur
+
+				violations++;
+
+				if (violations >= threshold) {
+					// passed the threshold, flag this document as suspicious
+					std::string susDocPair = thisDoc.getPath() + " " + curDoc.getPath();
+
+					badPairs[susDocPair] = 1;
+					// done with this current doc, go to next
+					break;
+
+				}
+
+			}
+		}
 
 	}
+
+	return badPairs;
+}
+
+void PlagCheck :: checkL(int index) {
 
 }
 
@@ -101,18 +136,6 @@ void PlagCheck :: checkM(int index) {
 void PlagCheck :: checkH(int index) {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -25,6 +25,9 @@ class Document {
 		// returns the number of words in the document
 		unsigned length();
 
+		// returns the path of the Document
+		std::string getPath() { return path; }
+
 	private:
 		// add ngrams to the model from a vector of words
 		void buildNgrams(unsigned n, const std::vector<std::string> &text);

@@ -14,6 +14,9 @@ class PlagCheck {
 		// prints all file names
 		std::string toString() const;
 
+		// check with a threshold
+		std::map<std::string, int> checkThreshold(int index, int threshold);
+
 		// checks with high sensitivity
 		void checkH(int index);
 

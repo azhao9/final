@@ -4,3 +4,29 @@ Final Project
 
 Aleck Zhao azhao9
 Noah Halperh nhalper1
+
+Running:
+	Our project comes with a makefile in src/ that can be used to make the program. The executable is bin/final. The first command line argument is the path of a file that contains the paths of documents to compare. The second command line argument is optional. Please enter H, M, L, corresponding to high, medium and low sensitivity detection. If the argument is not specified, the program will default to medium sensitivity.
+
+Testing:
+	We did not have time to make unit tests. 
+
+Plan of Attack:
+	We decided to make use of the NgramCollection to test similarity of documents. We wanted to see if Ngrams of a certain length could be found in a document to test and any of the rest of the documents to check against.
+
+Design:
+	We used the reference implementation of NgramCollection from assignment 8, with some added features, and also eliminated features that wouldn't be useful. We decided to use a class to contain different Ngram collection representations of the text in the file. Our program is run with a class that does all the checking at different sensitivity levels. For the actual detection, we considered a single file at a time, and compared it to every other file in the list (that came afterwards, to eliminate double counting pairs of documents). 
+
+	NgramCollection.cpp: Provides methods to manipulate and create a single Ngram collection for a given N. This uses the reference implementation.
+
+	Document.cpp: Provides methods for creating document objects. A document is a wrapper for a file that stores its path, and generates Ngram representations of the text for N from 10 to 30. 
+
+	PlagCheck.cpp: Provides methods for detecting plagiarism. The main function is a threshold checker. It compares a document to another, and if there are enough matching Ngrams in both texts, more than the threshold, then that pair of documents is marked as being suspicious.
+
+Flags:
+
+Timing:
+
+Challenges
+
+Future:

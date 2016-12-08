@@ -45,5 +45,6 @@ int main(int argc, char** argv) {
 		char sens = argv[2][0];
 		p.masterCheck(sens);
 	}
+	
 	return 0;
 }

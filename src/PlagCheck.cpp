@@ -15,12 +15,17 @@ void PlagCheck :: readFileList(std::string fname) {
 	std::vector<std::string> nameList = readNames(fname);
 	for (std::string &name : nameList) {
 		Document doc (name);
-		for(unsigned i = 10; i < 30; i++) {
+		/*
+		for(unsigned i = 2; i < 30; i++) {
 			// checks if i is shorter than length of entire document
 			if (i < doc.length()) {
 				doc.addTextFromFile(i);
 			}
-		}
+		}*/
+
+		doc.addTextFromFile(6);
+		doc.addTextFromFile(8);
+		doc.addTextFromFile(10);
 		docs.push_back(doc);
 	}
 }
@@ -47,11 +52,15 @@ std::vector<std::string> PlagCheck :: readNames(std::string listFile) {
 
 void PlagCheck :: masterCheck(char sens) {
 
+	int count = 0;
+
 	for (size_t i = 0; i < docs.size(); i++) {
 		for (auto & el : checkDoc(i, sens)) {
 			std::cout << el.first << "\n";
+			count++;
 		}
 	}
+	std::cout << "Number of suspicious pairs: " << count << "\n";
 }
 
 std::map<std::string, int> PlagCheck :: checkDoc(int index, char sens) {
@@ -129,19 +138,19 @@ std::map<std::string, int> PlagCheck :: checkThreshold(int index, int threshold,
 
 std::map<std::string, int> PlagCheck :: checkL(int index) {
 
-	return checkThreshold(index, 20, 20);
+	return checkThreshold(index, 3, 10);
 
 }
 
 std::map<std::string, int> PlagCheck :: checkM(int index) {
 
-	return checkThreshold(index, 15, 15);
+	return checkThreshold(index, 3, 8);
 
 }
 
 std::map<std::string, int> PlagCheck :: checkH(int index) {
 
-	return checkThreshold(index, 10, 10);
+	return checkThreshold(index, 3, 6);
 
 }
 

@@ -9,7 +9,7 @@
 # Compiler commands
 ###############################
 GCC = g++
-CPPFLAGS = -std=c++11 -pedantic -Wall -Wextra -g -I../include
+CPPFLAGS = -std=c++11 -pedantic -Wall -Wextra -O3 -g -I../include
 
 ###############################
 # pa.hpp variables
@@ -29,13 +29,13 @@ $(shell mkdir -p $(BIN_DIR))
 # targets 
 ###############################
 
-all: $(BIN_DIR)/a8 
+all: $(BIN_DIR)/final
 
-$(BIN_DIR)/a8: $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o $(OBJ_DIR)/PlagCheck.o
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a8.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o $(OBJ_DIR)/PlagCheck.o -o $(BIN_DIR)/a8
+$(BIN_DIR)/final: $(OBJ_DIR)/final.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o $(OBJ_DIR)/PlagCheck.o
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/final.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Document.o $(OBJ_DIR)/PlagCheck.o -o $(BIN_DIR)/final
 
-$(OBJ_DIR)/a8.o: a8.cpp 
-	$(GCC) $(CPPFLAGS) -c a8.cpp -o $(OBJ_DIR)/a8.o
+$(OBJ_DIR)/final.o: final.cpp 
+	$(GCC) $(CPPFLAGS) -c final.cpp -o $(OBJ_DIR)/final.o
 
 $(OBJ_DIR)/PlagCheck.o: PlagCheck.cpp $(INC_DIR)/PlagCheck.hpp $(INC_DIR)/Document.hpp
 	$(GCC) $(CPPFLAGS) -c PlagCheck.cpp -o $(OBJ_DIR)/PlagCheck.o

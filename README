@@ -9,7 +9,7 @@ Running:
 	Our project comes with a makefile in src/ that can be used to make the program. The executable is bin/final. The first command line argument is the path of a file that contains the paths of documents to compare. The second command line argument is optional. Please enter H, M, L, corresponding to high, medium and low sensitivity detection. If the argument is not specified, the program will default to medium sensitivity.
 
 Testing:
-	We did not have time to make unit tests. 
+	We did not have time to make unit tests for individual classes or methods.
 
 Plan of Attack:
 	We decided to make use of the NgramCollection to test similarity of documents. We wanted to see if Ngrams of a certain length could be found in a document to test and any of the rest of the documents to check against. We believe our algorithm is pretty original, but somewhat brute-force.
@@ -23,7 +23,8 @@ Design:
 
 	PlagCheck.cpp: Provides methods for detecting plagiarism. The main function is a threshold checker. It compares a document to another, and if there are enough matching Ngrams in both texts, more than the threshold, then that pair of documents is marked as being suspicious.
 
-Flags: 
+Flags:
+    The flags that can be used as the third element of the input (following the executable and the filename) are "H", "M", and "L". H will run the program with the highest sensitivity, M with medium, and L with low sensitivity. The flags must be entered as capital letters.
 
 Timing: 
 	The program runs relatively quickly on smaller data sets. Approximately 1 second for the small set, and quite fast for medium, but took over 5 minutes for the big data set. We did not even consider  The number of comparisons our program makes is O(n^2) where n is the number of documents in the data set. If we perform direct comparisons, this is as good as we can do.
@@ -32,3 +33,4 @@ Challenges:
 	We found that the convoluted-ness of the data structures we used led to complicated code. It was also difficult to test. We also had difficulty adjusting the parameters, and some of the results were confusing.
 
 Future:
+    In the future we would have liked to have written unit tests for the smaller pieces of our program. We also would have researched potential other algorithms that may have been faster, or more refined than the one we came up with. Alternatively, we would have tried to update our program to use std::unordered_map which may have allowed us to search faster, decreasing runtime.

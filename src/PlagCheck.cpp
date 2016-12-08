@@ -15,7 +15,7 @@ void PlagCheck :: readFileList(std::string fname) {
 	std::vector<std::string> nameList = readNames(fname);
 	for (std::string &name : nameList) {
 		Document doc (name);
-		for(unsigned i = 2; i < 15; i++) {
+		for(unsigned i = 2; i < 30; i++) {
 			// checks if i is shorter than length of entire document
 			if (i < doc.length()) {
 				doc.addTextFromFile(i);
@@ -145,7 +145,7 @@ std::map<std::string, int> PlagCheck :: checkM(int index) {
 
 std::map<std::string, int> PlagCheck :: checkH(int index) {
 
-	return checkThreshold(index, 1, 6);
+	return checkThreshold(index, 10, 10);
 
 }
 

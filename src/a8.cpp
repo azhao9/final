@@ -31,7 +31,9 @@ int main(int argc, char** argv) {
 
 	}
 
-	PlagCheck p(argv[2]);
+	std::string arg1(argv[1]);
+
+	PlagCheck p(arg1);
 
 	p.masterCheck('H');
 

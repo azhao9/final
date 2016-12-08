@@ -1,3 +1,11 @@
+/* Document.hpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last modified 12/7/2016
+ *
+ * Provides prototypes for creating and accessing Documents.
+ */
 #ifndef _AZNH_DOCUMENT_HPP
 #define _AZNH_DOCUMENT_HPP
 #include <vector>

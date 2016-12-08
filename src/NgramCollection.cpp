@@ -1,3 +1,11 @@
+/* NgramCollection.cpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last Modified: 12/7/2016
+ *
+ * Class that represents an Ngram Collection for a given length n.
+ */
 #include "NgramCollection.hpp"
 #include <iostream>
 #include <sstream>

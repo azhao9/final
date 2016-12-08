@@ -1,3 +1,11 @@
+/* NgramCollection.hpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last Modified: 12/7/2016
+ *
+ * Provides prototypes for creating Ngram collections.
+ */
 #ifndef _CS120_NGRAM_COLLECTION_HPP
 #define _CS120_NGRAM_COLLECTION_HPP
 #include <vector>
@@ -27,15 +35,16 @@ class NgramCollection {
 		std::string toStringReverseAlpha() const;
 		std::string toStringCount() const;
 
+		// returns the underlying map
 		std::map<std::vector<std::string>, std::map<std::string, unsigned>> getCounts() {return counts;}
 
 	private:
 
-			//the collection of entries in this NgramCollection
-			std::map<std::vector<std::string>, std::map<std::string, unsigned>> counts;
+		//the collection of entries in this NgramCollection
+		std::map<std::vector<std::string>, std::map<std::string, unsigned>> counts;
 
-			//the number of items in our NgramCollection
-			unsigned n;  
+		//the number of items in our NgramCollection
+		unsigned n;  
 };
 
 #endif

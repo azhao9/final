@@ -1,3 +1,11 @@
+/* PlagCheck.hpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last Modified: 12/7/2016
+ *
+ * Provides prototypes for plagiarism detection at different sensitivities.
+ */
 #ifndef _AZNH_PLAGCHECK_HPP
 #define _AZNH_PLAGCHECK_HPP
 

@@ -1,3 +1,11 @@
+/* final.cpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last Modified: 12/7/2016
+ *
+ * Driver for running the plagiarism checker.
+ */
 #include <iostream>
 #include <sstream>
 #include <string>

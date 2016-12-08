@@ -1,3 +1,12 @@
+/* Document.cpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last Modified: 12/7/2016
+ *
+ * Document wrapper class for storing Ngram representations of a text file.
+ */
+
 #include "Document.hpp"
 #include <iostream>
 #include <fstream>
@@ -27,7 +36,7 @@ void Document :: addTextFromFile(unsigned n) {
 }
 
 /* Returns the number of words in the document 
- */
+*/
 unsigned Document :: length() {
 	std::ifstream fin(path);
 

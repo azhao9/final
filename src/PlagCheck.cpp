@@ -1,9 +1,16 @@
+/* PlagCheck.cpp
+ *
+ * Aleck Zhao azhao9
+ * Noah Halpern nhalper1
+ * Last Modified: 12/7/2016
+ *
+ * Class for checking for plagiarism. Allows for checking at different sensitivities.
+ */
 #include "PlagCheck.hpp"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <map>
-#include <set>
 
 /* 
  * Accepts a file containing paths to documents

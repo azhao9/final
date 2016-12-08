@@ -23,8 +23,8 @@ void PlagCheck :: readFileList(std::string fname) {
 			}
 		}*/
 
+		doc.addTextFromFile(5);
 		doc.addTextFromFile(6);
-		doc.addTextFromFile(8);
 		doc.addTextFromFile(10);
 		docs.push_back(doc);
 	}
@@ -138,19 +138,19 @@ std::map<std::string, int> PlagCheck :: checkThreshold(int index, int threshold,
 
 std::map<std::string, int> PlagCheck :: checkL(int index) {
 
-	return checkThreshold(index, 3, 10);
+	return checkThreshold(index, 8, 5);
 
 }
 
 std::map<std::string, int> PlagCheck :: checkM(int index) {
 
-	return checkThreshold(index, 3, 8);
+	return checkThreshold(index, 7, 5);
 
 }
 
 std::map<std::string, int> PlagCheck :: checkH(int index) {
 
-	return checkThreshold(index, 3, 6);
+	return checkThreshold(index, 6, 5);
 
 }
 

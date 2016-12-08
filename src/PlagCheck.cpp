@@ -22,17 +22,7 @@ void PlagCheck :: readFileList(std::string fname) {
 	std::vector<std::string> nameList = readNames(fname);
 	for (std::string &name : nameList) {
 		Document doc (name);
-		/*
-		for(unsigned i = 2; i < 30; i++) {
-			// checks if i is shorter than length of entire document
-			if (i < doc.length()) {
-				doc.addTextFromFile(i);
-			}
-		}*/
-
 		doc.addTextFromFile(5);
-		doc.addTextFromFile(6);
-		doc.addTextFromFile(10);
 		docs.push_back(doc);
 	}
 }
@@ -57,6 +47,8 @@ std::vector<std::string> PlagCheck :: readNames(std::string listFile) {
 	return names;
 }
 
+/* Master check function that checks all documents against each other at a given sensitivity.
+ */
 void PlagCheck :: masterCheck(char sens) {
 
 	int count = 0;
@@ -70,6 +62,8 @@ void PlagCheck :: masterCheck(char sens) {
 	std::cout << "Number of suspicious pairs: " << count << "\n";
 }
 
+/* Checks a specific document given at an index against other documents.
+ */
 std::map<std::string, int> PlagCheck :: checkDoc(int index, char sens) {
 
 	if (sens == 'H') {
@@ -89,7 +83,7 @@ std::map<std::string, int> PlagCheck :: checkThreshold(int index, int threshold,
 	Document thisDoc = docs.at(index);
 	std::map<unsigned, NgramCollection> thisGrams = thisDoc.getGrams();
 
-	// use a map for constant time access
+	// use a map because why not
 	std::map<std::string, int> badPairs;
 
 	// document does not contain any n-grams, assume it can't be plagiarized
@@ -143,12 +137,16 @@ std::map<std::string, int> PlagCheck :: checkThreshold(int index, int threshold,
 	return badPairs;
 }
 
+/* Checks at low sensitivity.
+ */
 std::map<std::string, int> PlagCheck :: checkL(int index) {
 
 	return checkThreshold(index, 8, 5);
 
 }
 
+/* Checks at medium sensitivity.
+ */
 std::map<std::string, int> PlagCheck :: checkM(int index) {
 
 	return checkThreshold(index, 7, 5);
@@ -157,6 +155,8 @@ std::map<std::string, int> PlagCheck :: checkM(int index) {
 
 std::map<std::string, int> PlagCheck :: checkH(int index) {
 
+/* Checks at high sensitivity.
+ */
 	return checkThreshold(index, 6, 5);
 
 }

@@ -19,15 +19,15 @@ Design:
 
 	NgramCollection.cpp: Provides methods to manipulate and create a single Ngram collection for a given N. This uses the reference implementation.
 
-	Document.cpp: Provides methods for creating document objects. A document is a wrapper for a file that stores its path, and generates Ngram representations of the text for N from 10 to 30. 
+	Document.cpp: Provides methods for creating document objects. A document is a wrapper for a file that stores its path, and generates a 5-gram representation.
 
 	PlagCheck.cpp: Provides methods for detecting plagiarism. The main function is a threshold checker. It compares a document to another, and if there are enough matching Ngrams in both texts, more than the threshold, then that pair of documents is marked as being suspicious.
 
 Flags:
-    The flags that can be used as the third element of the input (following the executable and the filename) are "H", "M", and "L". H will run the program with the highest sensitivity, M with medium, and L with low sensitivity. The flags must be entered as capital letters.
+    The flags that can be used as the third element of the input (following the executable and the filename) are "H", "M", and "L". H will run the program with the highest sensitivity, M with medium, and L with low sensitivity. The flags must be entered as capital letters. The different sensitivities all checked 5-grams and thresholds. For high sensitivity, 6 was the threshold. For medium sensitivity, 7 was the threshold. For low sensitivity, 8 was the threshold.
 
 Timing: 
-	The program runs relatively quickly on smaller data sets. Approximately 1 second for the small set, and quite fast for medium, but took over 5 minutes for the big data set. We did not even consider  The number of comparisons our program makes is O(n^2) where n is the number of documents in the data set. If we perform direct comparisons, this is as good as we can do.
+	The program runs relatively quickly on smaller data sets. Approximately 1 second for the small set, and quite fast for medium, but took over 5 minutes for the big data set. We did not even consider  The number of comparisons our program makes is O(n^2) where n is the number of documents in the data set. If we perform direct comparisons, this is as good as we can do. We used a map, which has O(log n) time for finding, so the overall time of the program is roughly O(n^2 log n).
 
 Challenges:
 	We found that the convoluted-ness of the data structures we used led to complicated code. It was also difficult to test. We also had difficulty adjusting the parameters, and some of the results were confusing.

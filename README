@@ -27,7 +27,7 @@ Flags:
     The flags that can be used as the third element of the input (following the executable and the filename) are "H", "M", and "L". H will run the program with the highest sensitivity, M with medium, and L with low sensitivity. The flags must be entered as capital letters. The different sensitivities all checked 5-grams and thresholds. For high sensitivity, 6 was the threshold. For medium sensitivity, 7 was the threshold. For low sensitivity, 8 was the threshold.
 
 Timing: 
-	The program runs relatively quickly on smaller data sets. Approximately 1 second for the small set, and quite fast for medium, but took over 5 minutes for the big data set. We did not even consider  The number of comparisons our program makes is O(n^2) where n is the number of documents in the data set. If we perform direct comparisons, this is as good as we can do. We used a map, which has O(log n) time for finding, so the overall time of the program is roughly O(n^2 log n).
+	The program runs relatively quickly on smaller data sets. Approximately 1 second for the small set, and quite fast for medium, but took over 5 minutes for the big data set. We did not even consider trying on the large or huge data sets, and they would probably take too long. The number of comparisons our program makes is O(n^2) where n is the number of documents in the data set. If we perform direct comparisons, this is as good as we can do. We used a map, which has O(log n) time for finding, so the overall time of the program is roughly O(n^2 log n).
 
 Challenges:
 	We found that the convoluted-ness of the data structures we used led to complicated code. It was also difficult to test. We also had difficulty adjusting the parameters, and some of the results were confusing.

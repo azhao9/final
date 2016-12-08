@@ -16,7 +16,6 @@
  * element of the map */
 void NgramCollection :: increment(std::vector<std::string>::const_iterator begin,
 		std::vector<std::string>::const_iterator end) {
-	assert(end - begin == n); // make sure we've got the right number of words
 	std::string last = *(end-1); // pull off the word at the end
 	std::vector<std::string> words; // make a vector containing the first n-1 words
 	for (auto i = begin; i != end-1; ++i) {
